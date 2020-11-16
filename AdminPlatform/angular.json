@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "AdminPlatform"
+  "defaultProject": "AdminPlatform",
+  "cli": {
+    "analytics": "2ab8ea2b-c899-4c68-9e45-b5c9a48af16b"
+  }
 }
