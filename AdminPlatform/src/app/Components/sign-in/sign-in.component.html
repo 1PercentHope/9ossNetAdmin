@@ -1,16 +1,9 @@
+
 <p>sign-in works!</p>
-<a  routerLink="/profile" >Profile</a>
-<div>
-<div class="mb-3">
-    <form>
+<!-- <a  routerLink="/profile" >Profile</a> -->
+    <form (Submit)="onSubmit($event)">
         <i id="icon" class="material-icons prefix">email</i>
         <input type="email" placeholder="enter your email..."/>
-    </form>
-</div>
-<div class="mb-3">
-    <form>
         <i id="icon" class="material-icons prefix">vpn_key</i>
         <input type="password" placeholder="enter your passeword..."/>
     </form>
-</div>
-</div>
