@@ -43,7 +43,7 @@ events= [
   }
   // delete one seat
   public deleteSeat(info: any) {
-    return this.httpClient.delete(this._urlSeats + '/remove',info)
+    return this.httpClient.delete(this._urlSeats + '/remove:id',info)
   }
   // delete one seat
   public deleteAllSeats() {
@@ -64,7 +64,7 @@ events= [
   }
   // delete one event
   public DeleteEvent(info: any) {
-    return this.httpClient.delete(this._urlEvents + '/remove',info)
+    return this.httpClient.delete(this._urlEvents + '/remove:id',info)
   }
   // delete one event
   public deleteAllEvents() {

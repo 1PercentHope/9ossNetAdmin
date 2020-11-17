@@ -11,14 +11,14 @@ export class AdminsService {
   constructor(private httpClient: HttpClient) { }
   // signin as an admin
   public getAdmin(info: any) {
-    return this.httpClient.post(this._urlAdmin, info)
+    return this.httpClient.post(this._urlAdmin + '/signin', info)
   }
   // register a new admin
   public addAdmin(info: any) {
-    return this.httpClient.post(this._urlAdmin + '/newadmin', info)
+    return this.httpClient.post(this._urlAdmin + '/register', info)
   }
   // delete an admin account
   public removeAdmin(info: any) {
-    return this.httpClient.delete(this._urlAdmin + '/removeadmin', info)
+    return this.httpClient.delete(this._urlAdmin + '/remove', info)
   }
 }
