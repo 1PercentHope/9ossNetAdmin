@@ -1,4 +1,4 @@
-<p>events works!</p>
+<div>
 <div *ngFor="let event of events">
     <input value={{event.id}}/>
     <input value={{event.homeTeam}}/>
@@ -7,5 +7,8 @@
     <input value={{event.category}}/>
     <input value={{event.date}}/> 
     <input value={{event.descriptionevent}}/>
-<button type="submit" (click)='updateEvents()'>Submit changes</button>
+<button (click)='updateEvent()'>Submit changes</button>
+<button (click)='deleteEvent()'>Delete event</button>
+</div>
+<button (click)='deleteAll()'>Delete all events</button>
 </div>
