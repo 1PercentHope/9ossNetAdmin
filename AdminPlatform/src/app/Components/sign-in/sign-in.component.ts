@@ -27,4 +27,7 @@ export class SignInComponent implements OnInit {
       const user = {email: adminInfo.email, password: adminInfo.password}
       console.log(adminInfo)
     }
+    handleProfileButton(pageName: string): void {
+      this.router.navigate([`${pageName}`]);
+    }
 }

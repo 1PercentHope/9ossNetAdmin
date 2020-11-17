@@ -1,0 +1,11 @@
+<p>events works!</p>
+<div *ngFor="let event of events">
+    <input value={{event.id}}/>
+    <input value={{event.homeTeam}}/>
+    <input value={{event.awayTeam}}/>
+    <input value={{event.place}}/>
+    <input value={{event.category}}/>
+    <input value={{event.date}}/> 
+    <input value={{event.descriptionevent}}/>
+<button type="submit" (click)='updateEvents()'>Submit changes</button>
+</div>
