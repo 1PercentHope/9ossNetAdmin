@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminsService } from 'src/app/Service/admins.service';
+import { AdminsService } from '../../Service/admins.service';
 import {Router} from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
@@ -25,9 +25,16 @@ export class SignInComponent implements OnInit {
 
   onSubmit(adminInfo: any) {
       const user = {email: adminInfo.email, password: adminInfo.password}
-      console.log(adminInfo)
-    }
-    handleProfileButton(pageName: string): void {
+      this.adminsService.getAdmin(user).subscribe((admin: any)=>{
+        if(Object.keys(admin).length){
+          this.router.navigate(['profile'])
+          console.log(admin)
+        }else{
+          alert('Email or password is wrong, please refill with your right informations!')
+        }
+      })
+  }
+  handleProfileButton(pageName: string): void {
       this.router.navigate([`${pageName}`]);
-    }
+  }
 }

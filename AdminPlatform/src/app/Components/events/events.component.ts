@@ -14,7 +14,13 @@ this.events = this.dataService.events
 
   ngOnInit(): void {
   }
-updateEvents(){
+updateEvent(){
   
+}
+deleteEvent(){
+
+}
+deleteAll(){
+
 }
 }
