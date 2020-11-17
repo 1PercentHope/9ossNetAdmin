@@ -1,0 +1,11 @@
+<div>
+    <div *ngFor="let seat of seats">
+        <input value={{seat.id}} />
+        <input value={{seat.Number}} />
+        <input value={{seat.type}} />
+        <input value={{seat.availability}} />
+        <button (click)='updateSeat()'>Submit changes</button>
+        <button (click)='removeSeat()'>Remove seat</button>
+    </div>
+    <button (click)='deleteAll()'>Remove all seats</button>
+</div>
