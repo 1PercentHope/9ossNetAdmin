@@ -12,6 +12,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
   loginForm;
+  admin: any;
   constructor(private router: Router, private formBuilder: FormBuilder,private adminsService: AdminsService) {
     this.loginForm = this.formBuilder.group({
       email: '',
@@ -26,6 +27,7 @@ export class SignInComponent implements OnInit {
   onSubmit(adminInfo: any) {
       const user = {email: adminInfo.email, password: adminInfo.password}
       this.adminsService.getAdmin(user).subscribe((admin: any)=>{
+        this.admin = admin;
         if(Object.keys(admin).length){
           this.router.navigate(['profile'])
           console.log(admin)
