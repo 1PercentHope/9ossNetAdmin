@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminsService } from '../../Service/admins.service'
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
+  admin: any;
+  constructor(private adminsService: AdminsService) { }
 
   ngOnInit(): void {
+  }
+  logOut(){
+    this.adminsService.closeSession(this.admin).subscribe(closed=>{
+      console.log('successfully logged out!')
+    })
   }
  
 }
