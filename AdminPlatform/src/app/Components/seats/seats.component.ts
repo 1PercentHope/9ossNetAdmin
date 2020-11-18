@@ -14,7 +14,13 @@ export class SeatsComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  updateSeats(){
+  updateSeat(){
+    
+  }
+  removeSeat(){
+
+  }
+  deleteAll(){
     
   }
 }
