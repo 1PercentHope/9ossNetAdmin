@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,9 @@ export class AdminsService {
   // delete an admin account
   public removeAdmin(info: any) {
     return this.httpClient.delete(this._urlAdmin + '/remove', info)
+  }
+  // logOut
+  public closeSession(info: any) {
+    return this.httpClient.delete(this._urlAdmin + '/signout', info)
   }
 }

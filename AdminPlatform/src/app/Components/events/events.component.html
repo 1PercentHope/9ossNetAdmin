@@ -1,14 +1,25 @@
 <div>
-<div *ngFor="let event of events">
-    <input value={{event.id}}/>
-    <input value={{event.homeTeam}}/>
-    <input value={{event.awayTeam}}/>
-    <input value={{event.place}}/>
-    <input value={{event.category}}/>
-    <input value={{event.date}}/> 
-    <input value={{event.descriptionevent}}/>
-<button (click)='updateEvent()'>Submit changes</button>
-<button (click)='deleteEvent()'>Delete event</button>
-</div>
-<button (click)='deleteAll()'>Delete all events</button>
+    <div *ngFor="let event of events">
+        <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
+            {{event.id}}:
+            <input formControlName="eventId"/>
+            {{event.homeTeam}}:
+            <input formControlName="eventHome"/>
+            {{event.awayTeam}}:
+            <input formControlName="eventAway"/>
+            {{event.place}}:
+            <input formControlName="eventPlace"/>
+            {{event.category}}:
+            <input formControlName="eventCategory"/>
+            {{event.date}}:
+            <input formControlName="eventDate"/>
+            {{event.description}}:
+            <input formControlName="eventDescription"/>
+            {{event.price}}:
+            <input formControlName="eventPrice"/>
+            <button type="submit">Submit changes</button>
+        </form>
+
+    </div>
+    <button (click)='deleteAll()'>Delete all events</button>
 </div>

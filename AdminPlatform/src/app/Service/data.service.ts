@@ -30,7 +30,7 @@ events= [
 ]
   private _urlSeats = "http://localhost:5000/admins/seats";
   private _urlEvents = "http://localhost:5000/admins/events"
-  
+
   constructor(private httpClient: HttpClient) { }
 
   // get all seats
@@ -45,7 +45,7 @@ events= [
   public deleteSeat(info: any) {
     return this.httpClient.delete(this._urlSeats + '/remove:id',info)
   }
-  // delete one seat
+  // delete all seats
   public deleteAllSeats() {
     return this.httpClient.delete(this._urlSeats + '/remove')
   }
@@ -66,7 +66,7 @@ events= [
   public DeleteEvent(info: any) {
     return this.httpClient.delete(this._urlEvents + '/remove:id',info)
   }
-  // delete one event
+  // delete all events
   public deleteAllEvents() {
     return this.httpClient.delete(this._urlEvents + '/remove')
   }
