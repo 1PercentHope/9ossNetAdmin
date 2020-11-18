@@ -1,30 +1,20 @@
-<p>add new admin!</p>
 <div>
-    <div class="mb-3">
-        <form>
-            <i id="icon" class="material-icons prefix">person</i>
-            <input type="text" placeholder="enter your firstname..." />
-        </form>
-    </div>
-    <div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+        <i id="icon" class="material-icons prefix">person</i>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="enter your firstname..." />
         <div class="mb-3">
-            <form>
-                <i id="icon" class="material-icons prefix">person</i>
-                <input type="text" placeholder="enter your lastname..." />
-            </form>
+            <i id="icon" class="material-icons prefix">person</i>
+            <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="enter your lastname..." />
         </div>
-        <div>
-            <div class="mb-3">
-                <form>
-                    <i id="icon" class="material-icons prefix">email</i>
-                    <input type="email" placeholder="enter your email..." />
-                </form>
-            </div>
-            <div>
-                <div class="mb-3">
-                    <form>
-                        <i id="icon" class="material-icons prefix">vpn_key</i>
-                        <input type="password" placeholder="enter your passeword..." />
-                    </form>
-                </div>
-            </div>
+        <div class="mb-3">
+            <i id="icon" class="material-icons prefix">email</i>
+            <input id="email" type="email" class="form-control" formControlName="email" placeholder="enter your email...">
+        </div>
+        <div class="mb-3">
+            <i id="icon" class="material-icons prefix">vpn_key</i>
+            <input id="password" type="password" class="form-control" formControlName="password" placeholder="enter your password...">
+        </div>
+
+        <button type="submit">Add new admin</button>
+    </form>
+</div>

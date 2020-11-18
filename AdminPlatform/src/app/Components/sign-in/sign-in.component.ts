@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
   onSubmit(adminInfo: any) {
       const user = {email: adminInfo.email, password: adminInfo.password}
       this.adminsService.getAdmin(user).subscribe((admin: any)=>{
-        this.admin = admin;
+        console.log(admin)
         if(Object.keys(admin).length){
           this.router.navigate(['profile'])
           console.log(admin)
