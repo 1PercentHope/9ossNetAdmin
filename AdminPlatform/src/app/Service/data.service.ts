@@ -30,7 +30,7 @@ events= [
 ]
   private _urlSeats = "http://localhost:5000/admins/seats";
   private _urlEvents = "http://localhost:5000/admins/events"
-
+  
   constructor(private httpClient: HttpClient) { }
 
   // get all seats

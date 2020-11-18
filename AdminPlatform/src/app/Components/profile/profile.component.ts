@@ -17,5 +17,4 @@ export class ProfileComponent implements OnInit {
       console.log('successfully logged out!')
     })
   }
- 
 }
