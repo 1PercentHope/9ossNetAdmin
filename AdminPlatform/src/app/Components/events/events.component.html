@@ -1,4 +1,5 @@
 <div>
+    <a routerLink="/profile">go back</a>
     <div *ngFor="let event of events">
         <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
             {{event.id}}:

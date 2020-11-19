@@ -14,7 +14,11 @@
             <i id="icon" class="material-icons prefix">vpn_key</i>
             <input id="password" type="password" class="form-control" formControlName="password" placeholder="enter your password...">
         </div>
-
+        <div >
+            <img class="rounded-circle" [src]="urllink">
+            <input type="file" class="btn btn-success btn-sm" (change)="selectFiles($event)">
+        </div>
         <button type="submit">Add new admin</button>
     </form>
+    <a routerLink="/profile">go back</a>
 </div>
