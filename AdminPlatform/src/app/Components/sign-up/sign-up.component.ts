@@ -10,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
 export class SignUpComponent implements OnInit {
   newAdmin: any;
   registerForm;
-  urllink: string= "pictures/1";
+  // urllink: string= "pictures/1";
 
   constructor(private adminsService: AdminsService,private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
@@ -30,15 +30,15 @@ export class SignUpComponent implements OnInit {
       console.log(admin)
     })
   }
-  selectFiles(event:any){
-    if(event.target.files){
-      var reader = new FileReader()
-      reader.readAsDataURL(event.target.files[0])
-      reader.onload = (event: any) =>{
-        this.urllink = event.target.result
-      }
-    }
-  }
+  // selectFiles(event:any){
+  //   if(event.target.files){
+  //     var reader = new FileReader()
+  //     reader.readAsDataURL(event.target.files[0])
+  //     reader.onload = (event: any) =>{
+  //       this.urllink = event.target.result
+  //     }
+  //   }
+  // }
 
 
 }
