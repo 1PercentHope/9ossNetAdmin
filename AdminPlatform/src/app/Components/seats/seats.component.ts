@@ -14,15 +14,15 @@ export class SeatsComponent implements OnInit {
   constructor(private dataService: DataService, private formBuilder: FormBuilder) { 
     this.seatsForm = this.formBuilder.group({
       seatsId:"",
-      seatsNumber:0,
+      seatsNumber: '',
       seatsType:"",
-      seatsAvailability: true
+      seatsAvailability: ''
     })
   }
   ngOnInit(): void {
-    this.dataService.getSeats().subscribe(seats=>{
-      this.seats = seats
-      console.log(seats)
+    this.dataService.getSeats().subscribe(seat=>{
+      this.seats = seat
+      console.log(this.seats)
     })
   }
   updateSeat(updates: any) {
