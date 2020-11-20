@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminsService {
 
-  private _urlAdmin = "http://localhost:5000/admins";
+  private _urlAdmin = "http://192.168.22.122:5000/admins";
 
   constructor(private httpClient: HttpClient) { }
   // signin as an admin

@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  private _urlSeats = "http://localhost:5000/admins/seats";
-  private _urlEvents = "http://localhost:5000/admins/events";
-  private _urlMessages = "http://localhost:5000/admins/messages";
+  private _urlSeats = "http://192.168.22.122:5000/admins/seats";
+  private _urlEvents = "http://192.168.22.122:5000/admins/events";
+  private _urlMessages = "http://192.168.22.122:5000/admins/messages";
   constructor(private httpClient: HttpClient) { }
 
   // get all seats
