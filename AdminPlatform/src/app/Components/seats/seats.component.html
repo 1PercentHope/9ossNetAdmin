@@ -1,4 +1,5 @@
-<div>
+<!-- <div>
+    <a routerLink="/profile">go back</a>
     <div *ngFor="let seat of seats">
         <form [formGroup]="seatsForm" (click)='updateSeat(seatsForm.value)'>
            
@@ -12,4 +13,34 @@
 
     </div>
     <button (click)='deleteAll()'>Delete all seats</button>
+</div> -->
+<!-- ////////////////////////////////////////////////////////////// -->
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Seats</h2>
+        <ul>
+            <li><a href="#" routerLink="/profile"><i class="fas fa-home" ></i>go back</a></li>
+        </ul> 
+    </div>
+    <div class="main_content">
+        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="info">
+            <div>
+                <!-- <a routerLink="/profile">go back</a> -->
+                <div *ngFor="let seat of seats">
+                    <form [formGroup]="seatsForm" (click)='updateSeat(seatsForm.value)'>
+                       
+                        <input formControlName="seatsId" value= {{seat.id}}>
+                        <input formControlName="seatsNumber" value= {{seat.Number}}/>
+                        <input formControlName="seatsType" value= {{seat.type}}/>
+                        <input formControlName="seatsAvailability" value= {{seat.availability}}/>
+            
+                        <button type="submit">Submit changes</button>
+                    </form>
+            
+                </div>
+                <button (click)='deleteAll()'>Delete all seats</button>
+            </div>
+      </div>
+    </div>
 </div>

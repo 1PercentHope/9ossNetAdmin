@@ -29,8 +29,8 @@ events= [
   {id: 1, homeTeam: 'CSS', awayTeam: 'EST', place: 'Sfax',category: 'League 1' , date: '2/03/2020', description: 'Round 12' }
 ]
   private _urlSeats = "http://localhost:5000/admins/seats";
-  private _urlEvents = "http://localhost:5000/admins/events"
-
+  private _urlEvents = "http://localhost:5000/admins/events";
+  private _urlMessages = "http://localhost:5000/admins/messages";
   constructor(private httpClient: HttpClient) { }
 
   // get all seats
@@ -74,5 +74,16 @@ events= [
   public addEvent(info: any) {
     return this.httpClient.post(this._urlEvents + '/add', info)
   }
+
+////////////////////////messages/////////////////////////////
+// post message
+public addMessage(info: any) {
+  return this.httpClient.post(this._urlMessages + '/add', info)
 }
+// get message
+public getMessage() {
+  return this.httpClient.get(this._urlMessages)
+}
+}
+
 
