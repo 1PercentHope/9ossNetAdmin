@@ -25,7 +25,7 @@ export class SignUpComponent implements OnInit {
   }
   onSubmit(adminInfo: any){
     console.log(adminInfo)
-    const admin = {email: adminInfo.firstName, password: adminInfo.password}
+    const admin = {email: adminInfo.email, password: adminInfo.password}
     this.adminsService.addAdmin(admin).subscribe(admin=>{
       console.log(admin)
     })
