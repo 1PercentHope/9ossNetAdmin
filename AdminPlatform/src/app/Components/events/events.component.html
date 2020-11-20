@@ -40,7 +40,8 @@
                 <div *ngFor="let event of events">
                     <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
                         {{event.id}}:
-                        <input formControlName="eventId"/>
+                        <img src={{event.image}} alt="" width="500px">
+                        <input  type="file" name="image" (change)='fileImg($event)'/>
                         {{event.homeTeam}}:
                         <input formControlName="eventHome"/>
                         {{event.awayTeam}}:

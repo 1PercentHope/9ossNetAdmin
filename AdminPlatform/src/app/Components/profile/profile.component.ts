@@ -13,8 +13,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
   logOut(){
-    this.adminsService.closeSession(this.admin).subscribe(closed=>{
-      console.log('successfully logged out!')
-    })
+    // this.adminsService.closeSession(this.admin).subscribe(closed=>{
+    //   console.log('successfully logged out!')
+    // })
+    window.localStorage.removeItem('token');
   }
 }

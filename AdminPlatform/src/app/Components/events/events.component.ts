@@ -11,8 +11,8 @@ export class EventsComponent implements OnInit {
   events: any;
   eventsForm: any;
   a: any;
+  imgEncode: any;
   constructor(private dataService: DataService, private formBuilder: FormBuilder) {
-    // this.events = this.dataService.events;
     this.eventsForm = this.formBuilder.group({
       eventId: '',
       eventHome: '',
@@ -33,7 +33,7 @@ export class EventsComponent implements OnInit {
   }
   updateEvent(updates: any) {
     console.log(updates)
-    let event = {id: updates.eventId, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice}
+    let event = {image: this.imgEncode, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice}
     this.dataService.updateEvent(event).subscribe(res=>{
       console.log('event is updated!')
     })
@@ -43,4 +43,17 @@ export class EventsComponent implements OnInit {
       console.log('Events list is empty!')
     })
   }
+  fileImg(event: any){
+    const file = event.target.files[0]
+    this.previewFile(file)
+  }
+  previewFile(file: any){
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () =>{
+      this.imgEncode = reader.result
+      console.log(this.imgEncode)
+    }
+  }
+
 }
