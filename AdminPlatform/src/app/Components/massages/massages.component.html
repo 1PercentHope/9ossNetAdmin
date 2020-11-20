@@ -1,0 +1,32 @@
+<div>
+    <div *ngFor="let message of messages">
+        <form [formGroup]="messagesForm" (ngSubmit)='onSubmit(messagesForm.value)'>
+            <input formControlName="messagesText" value={{message.text}} />
+            <button type="submit">submit</button>
+        </form>
+    </div>
+</div>
+<!-- ///////////////////////////////////////// -->
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Profile</h2>
+        <ul>
+            <li><a href="#" routerLink="/profile"><i class="fas fa-home" ></i>go back</a></li>
+            
+        </ul> 
+    </div>
+    <div class="main_content">
+        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="info">
+            <div>
+                <div *ngFor="let message of messages">
+                    <form [formGroup]="messagesForm" (ngSubmit)='onSubmit(messagesForm.value)'>
+                        <input formControlName="messagesText" value={{message.text}} />
+                        <button type="submit">submit</button>
+                    </form>
+                </div>
+            </div>
+      </div>
+    </div>
+</div>
+

@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
         <i id="icon" class="material-icons prefix">person</i>
         <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="enter your firstname..." />
@@ -14,7 +14,46 @@
             <i id="icon" class="material-icons prefix">vpn_key</i>
             <input id="password" type="password" class="form-control" formControlName="password" placeholder="enter your password...">
         </div>
-
+        <div >
+            <img class="rounded-circle" [src]="urllink">
+            <input type="file" class="btn btn-success btn-sm" (change)="selectFiles($event)">
+        </div>
         <button type="submit">Add new admin</button>
     </form>
+    <a routerLink="/profile">go back</a>
+</div> -->
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Add new admin</h2>
+        <ul>
+            <li><a href="#" routerLink="/profile"><i class="fas fa-home" ></i>go back</a></li>
+        </ul> 
+    </div>
+    <div class="main_content">
+        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="info">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+                <i id="icon" class="material-icons prefix">person</i>
+                <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="enter your firstname..." />
+                <div class="mb-3">
+                    <i id="icon" class="material-icons prefix">person</i>
+                    <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="enter your lastname..." />
+                </div>
+                <div class="mb-3">
+                    <i id="icon" class="material-icons prefix">email</i>
+                    <input id="email" type="email" class="form-control" formControlName="email" placeholder="enter your email...">
+                </div>
+                <div class="mb-3">
+                    <i id="icon" class="material-icons prefix">vpn_key</i>
+                    <input id="password" type="password" class="form-control" formControlName="password" placeholder="enter your password...">
+                </div>
+                <!-- <div >
+                    <img class="rounded-circle" [src]="urllink">
+                    <input type="file" class="btn btn-success btn-sm" (change)="selectFiles($event)">
+                </div> -->
+                <button type="submit">Add new admin</button>
+            </form>
+         
+      </div>
+    </div>
 </div>
