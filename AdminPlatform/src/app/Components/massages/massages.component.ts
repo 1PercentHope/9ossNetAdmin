@@ -12,8 +12,7 @@ export class MassagesComponent implements OnInit {
   messagesForm: any;
   constructor(private dataService: DataService, private formBuilder: FormBuilder) {
     this.messagesForm = this.formBuilder.group({
-      messagesId: "",
-      messagesText: ""
+      Text: ""
     })
   }
 
@@ -25,13 +24,10 @@ export class MassagesComponent implements OnInit {
   }
 
 
-  onSubmit(adminMessage: any) {
-    const message = { text: adminMessage.text }
+  onSubmit(messagesForm: any) {
+    const message = { msg: messagesForm.Text }
     this.dataService.addMessage(message).subscribe((messages: any) => {
       console.log(messages)
-      if (Object.keys(messages).length) {
-        return messages
-      }
     })
   }
 }
