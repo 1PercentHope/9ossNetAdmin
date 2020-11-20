@@ -1,4 +1,5 @@
-<div>
+<!-- <div>
+    <a routerLink="/profile">go back</a>
     <div *ngFor="let event of events">
         <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
             {{event.id}}:
@@ -22,4 +23,44 @@
 
     </div>
     <button (click)='deleteAll()'>Delete all events</button>
+</div> -->
+<!-- /////////////////////////////////////////////////// -->
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Events</h2>
+        <ul>
+            <li><a href="#" routerLink="/profile"><i class="fas fa-home" ></i>go back</a></li>
+        </ul> 
+    </div>
+    <div class="main_content">
+        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="info">
+            <div>
+                <!-- <a routerLink="/profile">go back</a> -->
+                <div *ngFor="let event of events">
+                    <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
+                        {{event.id}}:
+                        <input formControlName="eventId"/>
+                        {{event.homeTeam}}:
+                        <input formControlName="eventHome"/>
+                        {{event.awayTeam}}:
+                        <input formControlName="eventAway"/>
+                        {{event.place}}:
+                        <input formControlName="eventPlace"/>
+                        {{event.category}}:
+                        <input formControlName="eventCategory"/>
+                        {{event.date}}:
+                        <input formControlName="eventDate"/>
+                        {{event.description}}:
+                        <input formControlName="eventDescription"/>
+                        {{event.price}}:
+                        <input formControlName="eventPrice"/>
+                        <button type="submit">Submit changes</button>
+                    </form>
+            
+                </div>
+                <button (click)='deleteAll()'>Delete all events</button>
+            </div>
+      </div>
+    </div>
 </div>

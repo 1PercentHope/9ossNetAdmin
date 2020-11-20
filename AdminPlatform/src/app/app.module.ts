@@ -12,6 +12,7 @@ import { EventsComponent } from './Components/events/events.component';
 import { SeatsComponent } from './Components/seats/seats.component';
 import { AdminsService } from './Service/admins.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MassagesComponent } from './Components/massages/massages.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignInComponent,
     ProfileComponent,
     EventsComponent,
-    SeatsComponent
+    SeatsComponent,
+    MassagesComponent
   ],
   imports: [
     BrowserModule,
