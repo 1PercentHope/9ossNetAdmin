@@ -42,6 +42,21 @@
                     </form>
             
                 </div>
+                <div *ngFor="let seat of seats">
+                    <form [formGroup]="seatsForm" (ngSubmit)='onSubmit(seatsForm.value)'>
+                        {{seat.id}}
+                        <input formControlName="seatsId" >
+                        {{seat.Number}}
+                        <input formControlName="seatsNumber" />
+                        {{seat.type}}
+                        <input formControlName="seatsType" />
+                        {{seat.availability}}
+                        <input formControlName="seatsAvailability" />
+            
+                        <button type="submit">add seat</button>
+                    </form>
+            
+                </div>                
                 <button (click)='deleteAll()'>Delete all seats</button>
             </div>
       </div>
