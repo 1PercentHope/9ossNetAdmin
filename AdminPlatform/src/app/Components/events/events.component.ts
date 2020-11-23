@@ -43,4 +43,10 @@ export class EventsComponent implements OnInit {
       console.log('Events list is empty!')
     })
   }
+  onSubmit(add: any) {
+    const event = { id: add.eventId, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
+    this.dataService.addEvent(event).subscribe((events: any) => {
+      console.log(events)
+    })
+  }
 }

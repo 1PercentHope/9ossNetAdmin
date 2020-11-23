@@ -39,4 +39,11 @@ export class SeatsComponent implements OnInit {
       console.log('Seats list is empty!')
     })
   }
+  
+  onSubmit(add: any) {
+    const seat = { id: add.seatsId, number: add.seatsNumber, type: add.seatsType, availability : add.seatsAvailability}
+    this.dataService.addSeat(seat).subscribe((seats: any) => {
+      console.log(seats)
+    })
+  }
 }
