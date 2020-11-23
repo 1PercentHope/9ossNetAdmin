@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class EventsComponent implements OnInit {
   events: any;
   eventsForm: any;
+  eventForm: any;
   a: any;
   imgEncode: any;
   constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder) {
@@ -24,6 +25,15 @@ export class EventsComponent implements OnInit {
       eventDate: '',
       eventDescription: '',
       eventPrice: ''
+    });
+    this.eventForm = this.formBuilder.group({
+      home: '',
+      away: '',
+      place: '',
+      category: '',
+      date: '',
+      description: '',
+      price: ''
     });
   }
 
@@ -49,17 +59,10 @@ export class EventsComponent implements OnInit {
       console.log('Events list is empty!')
     })
   }
-  fileImg(event: any) {
-    const file = event.target.files[0]
-    this.previewFile(file)
+  onSubmit(add: any) {
+    const event = { id: add.eventId, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
+    this.dataService.addEvent(event).subscribe((events: any) => {
+      console.log(events)
+    })
   }
-  previewFile(file: any) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      this.imgEncode = reader.result
-      console.log(this.imgEncode)
-    }
-  }
-
 }

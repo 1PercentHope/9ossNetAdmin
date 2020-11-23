@@ -12,13 +12,18 @@ import { Router } from '@angular/router';
 export class SeatsComponent implements OnInit {
   seats: any;
   seatsForm: any;
-
+  seatForm: any;
   constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder) {
     this.seatsForm = this.formBuilder.group({
       seatsId: "",
       seatsNumber: '',
       seatsType: "",
       seatsAvailability: ''
+    })
+    this.seatForm = this.formBuilder.group({
+      seatNumber: '',
+      seatType: "",
+      seatAvailability: ''
     })
   }
   ngOnInit(): void {
@@ -43,6 +48,13 @@ export class SeatsComponent implements OnInit {
   deleteAll() {
     this.dataService.deleteAllSeats().subscribe(res => {
       console.log('Seats list is empty!')
+    })
+  }
+  
+  onSubmit(add: any) {
+    const seat = { id: add.seatsId, number: add.seatsNumber, type: add.seatsType, availability : add.seatsAvailability}
+    this.dataService.addSeat(seat).subscribe((seats: any) => {
+      console.log(seats)
     })
   }
 }
