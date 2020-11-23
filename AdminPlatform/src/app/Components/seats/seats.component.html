@@ -42,16 +42,14 @@
                     </form>
             
                 </div>
-                <div *ngFor="let seat of seats">
-                    <form [formGroup]="seatsForm" (ngSubmit)='onSubmit(seatsForm.value)'>
-                        {{seat.id}}
-                        <input formControlName="seatsId" >
-                        {{seat.Number}}
-                        <input formControlName="seatsNumber" />
-                        {{seat.type}}
-                        <input formControlName="seatsType" />
-                        {{seat.availability}}
-                        <input formControlName="seatsAvailability" />
+                <div>
+                    <form [formGroup]="seatForm" (ngSubmit)='onSubmit(seatForm.value)'>
+                        number: 
+                        <input formControlName="seatNumber"/>
+                        category: 
+                        <input formControlName="seatType"/>
+                        availability:
+                        <input formControlName="seatAvailability"/>
             
                         <button type="submit">add seat</button>
                     </form>
