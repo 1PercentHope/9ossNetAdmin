@@ -27,6 +27,7 @@ export class EventsComponent implements OnInit {
       eventPrice: ''
     });
     this.eventForm = this.formBuilder.group({
+      image: '',
       home: '',
       away: '',
       place: '',
@@ -60,9 +61,24 @@ export class EventsComponent implements OnInit {
     })
   }
   onSubmit(add: any) {
-    const event = { id: add.eventId, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
+    const event = { id: add.eventId, eventImage: this.eventForm.image, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
     this.dataService.addEvent(event).subscribe((events: any) => {
       console.log(events)
     })
+  }
+  fileImg2(e:any){
+    const file = e.target.files[0];
+    this.previewFile(file)
+  }
+  previewFile(file: any){
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () =>{
+      this.eventForm.image = reader.result
+      console.log(this.eventForm.image)
+    }
+  }
+  fileImg(e:any){
+
   }
 }

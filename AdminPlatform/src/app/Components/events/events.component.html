@@ -41,7 +41,7 @@
                     <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
                         <div class="inputInfo">
                             <h3> {{event.id}} </h3>
-                            <img src={{event.image}} alt="" width="500px">
+                            <img src={{event.image}} alt="" width="500px" (change)="fileImg($event)">
                             <input type="file" name="image"  />
                             <h3 class="homeTeam"> {{event.homeTeam}}: </h3>
                             <input formControlName="eventHome" class="home" />
@@ -65,7 +65,7 @@
                 <div class="update">
                     <form [formGroup]="eventForm" (ngSubmit)='onSubmit(eventForm.value)' class="inputInfo">
                         <h3>image:</h3>
-                        <input type="file" name="image"  />
+                        <input type="file" name="image" (change)="fileImg2($event)" />
                         <h3 class="homeTeam"> home team: </h3>
                         <input formControlName="home" class="home" />
                         <h3 class="awayTeam"> away team: </h3>
