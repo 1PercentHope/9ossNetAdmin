@@ -42,6 +42,19 @@
                     </form>
             
                 </div>
+                <div>
+                    <form [formGroup]="seatForm" (ngSubmit)='onSubmit(seatForm.value)'>
+                        number: 
+                        <input formControlName="seatNumber"/>
+                        category: 
+                        <input formControlName="seatType"/>
+                        availability:
+                        <input formControlName="seatAvailability"/>
+            
+                        <button type="submit">add seat</button>
+                    </form>
+            
+                </div>                
                 <button (click)='deleteAll()'>Delete all seats</button>
             </div>
       </div>

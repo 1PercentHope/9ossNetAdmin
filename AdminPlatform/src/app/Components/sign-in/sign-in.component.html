@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <h3>sign in</h3>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
         <div>
@@ -11,4 +11,34 @@
         </div>
         <button type="submit" >Login</button>
     </form>
+</div> -->
+<!-- ////////////////////////////////////////////////: -->
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>sign in</h2>
+        <ul>
+            <li><a href="#" routerLink="/home"><i id="icon"  class="fas fa-home"></i>Home</a></li>
+            <!-- <li><a href="#" routerLink="/events"><i id="icon" class="material-icons prefix">event</i>Events</a></li>
+            <li><a href="#" routerLink="/seats"><i id="icon" class="material-icons prefix">event_seat</i>Seats</a></li>
+            <li><a href="#" routerLink="/messages"><i id="icon" class="material-icons prefix">message</i>messages</a></li>
+            <li><a href="#" routerLink="/" (click)="logOut()"><i id="icon" class="material-icons prefix">exit_to_app</i>Logout</a></li> -->
+        </ul> 
+
+    </div>
+    <div class="main_content">
+        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="info">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <input id="email" type="email" class="form-control" formControlName="email">
+                </div>
+                <div>
+                    <i class="fas fa-lock"></i>
+                    <input id="password" type="password" class="form-control" formControlName="password">
+                </div>
+                <button class="button" type="submit" >Login</button>
+            </form>
+      </div>
+    </div>
 </div>

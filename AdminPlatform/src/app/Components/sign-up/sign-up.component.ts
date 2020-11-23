@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminsService } from '../../Service/admins.service';
 import { FormBuilder } from '@angular/forms';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +14,7 @@ export class SignUpComponent implements OnInit {
   registerForm;
   // urllink: string= "pictures/1";
 
-  constructor(private adminsService: AdminsService,private formBuilder: FormBuilder) {
+  constructor(private router: Router,private adminsService: AdminsService,private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       firstName: '',
       lastName: '',
@@ -22,6 +24,9 @@ export class SignUpComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if (window.localStorage.getItem('token') === null) {
+      this.router.navigate(['home'])
+    }
   }
   onSubmit(adminInfo: any){
     console.log(adminInfo)

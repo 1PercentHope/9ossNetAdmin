@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../Service/data.service';
 import { FormBuilder } from '@angular/forms';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-massages',
@@ -10,17 +12,21 @@ import { FormBuilder } from '@angular/forms';
 export class MassagesComponent implements OnInit {
   messages: any;
   messagesForm: any;
-  constructor(private dataService: DataService, private formBuilder: FormBuilder) {
+  constructor(private router: Router,private dataService: DataService, private formBuilder: FormBuilder) {
     this.messagesForm = this.formBuilder.group({
       Text: ""
     })
   }
 
   ngOnInit(): void {
-    this.dataService.getMessage().subscribe(messages => {
-      this.messages = messages
-      console.log(messages)
-    })
+    if (window.localStorage.getItem('token') === null) {
+      this.router.navigate(['home'])
+    } else {
+      this.dataService.getMessage().subscribe(messages => {
+        this.messages = messages
+        console.log(messages)
+      })
+    }
   }
 
 
