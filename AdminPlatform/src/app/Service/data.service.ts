@@ -51,7 +51,7 @@ export class DataService {
   }
   // add new event
   public addEvent(info: any) {
-    return this.httpClient.post(this._urlEvents + '/add', info)
+    return this.httpClient.post(this._urlEvents + '/upload', info)
   }
 
 ////////////////////////messages/////////////////////////////
