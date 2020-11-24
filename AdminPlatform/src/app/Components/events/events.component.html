@@ -30,59 +30,79 @@
         <h2>Events</h2>
         <ul>
             <li><a href="#" routerLink="/profile"><i class="fas fa-hand-point-left"></i>go back</a></li>
-        </ul> 
+        </ul>
     </div>
     <div class="main_content">
-        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="header">Welcome!! Have a nice day.</div>
         <div class="info">
             <div>
                 <!-- <a routerLink="/profile">go back</a> -->
-                <div *ngFor="let event of events">
+                <div *ngFor="let event of events" class="update">
                     <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
-                        {{event.id}}:
-                        <input formControlName="eventId"/>
-                        {{event.homeTeam}}:
-                        <input formControlName="eventHome"/>
-                        {{event.awayTeam}}:
-                        <input formControlName="eventAway"/>
-                        {{event.place}}:
-                        <input formControlName="eventPlace"/>
-                        {{event.category}}:
-                        <input formControlName="eventCategory"/>
-                        {{event.date}}:
-                        <input formControlName="eventDate"/>
-                        {{event.description}}:
-                        <input formControlName="eventDescription"/>
-                        {{event.price}}:
-                        <input formControlName="eventPrice"/>
-                        <button type="submit">Submit changes</button>
+                        <div class="inputInfo">
+                            <h3> {{event.id}} </h3>
+                            <img src={{event.image}} alt="" width="500px" (change)="fileImg($event)">
+                            <input type="file" name="image"  />
+                            <h3 class="homeTeam"> {{event.homeTeam}}: </h3>
+                            <input formControlName="eventHome" class="home" />
+                            <h3 class="awayTeam"> {{event.awayTeam}}: </h3>
+                            <input formControlName="eventAway" class="away" />
+                            <h3> {{event.place}}: </h3>
+                            <input formControlName="eventPlace" />
+                            <h3> {{event.category}}: </h3>
+                            <input formControlName="eventCategory" />
+                            <h3> {{event.date}}: </h3>
+                            <input formControlName="eventDate" />
+                            <h3> {{event.description}}: </h3>
+                            <input formControlName="eventDescription" />
+                            <h3> {{event.price}}: </h3>
+                            <input formControlName="eventPrice" />
+                            <button type="submit">Submit changes</button>
+                        </div>
                     </form>
-            
+
                 </div>
-                <div *ngFor="let event of events">
-                    <form [formGroup]="eventsForm" (ngSubmit)='onSubmit(eventsForm.value)'>
-                        {{event.id}}:
-                        <input formControlName="eventId"/>
-                        {{event.homeTeam}}:
-                        <input formControlName="eventHome"/>
-                        {{event.awayTeam}}:
-                        <input formControlName="eventAway"/>
-                        {{event.place}}:
-                        <input formControlName="eventPlace"/>
-                        {{event.category}}:
-                        <input formControlName="eventCategory"/>
-                        {{event.date}}:
-                        <input formControlName="eventDate"/>
-                        {{event.description}}:
-                        <input formControlName="eventDescription"/>
-                        {{event.price}}:
-                        <input formControlName="eventPrice"/>
+                <div class="update">
+                    <form [formGroup]="eventForm" (ngSubmit)='onSubmit(eventForm.value)' class="inputInfo">
+                        <h3>image:</h3>
+                        <input type="file" name="image" (change)="onSelect($event)" />
+                        <h3 class="homeTeam"> home team: </h3>
+                        <input formControlName="home" class="home" />
+                        <h3 class="awayTeam"> away team: </h3>
+                        <input formControlName="away"  class="away"/>
+                        <h3> place:</h3>
+                        <input formControlName="place" />
+                        <h3> category:</h3>
+                        <input formControlName="category" />
+                        <h3> data:</h3>
+                        <input formControlName="date" />
+                        <h3> description</h3>
+                        <input formControlName="description" />
+                        <h3> price:</h3>
+                        <input formControlName="price" />
                         <button type="submit">add event</button>
                     </form>
-            
+
                 </div>
                 <button (click)='deleteAll()'>Delete all events</button>
             </div>
-      </div>
+        </div>
     </div>
+    <div class="terminal">
+        <ngx-dropzone (change)="onSelect($event)" style="margin: 20px;">
+          <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+          <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+            *ngFor="let f of files"
+            [file]="f"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <ngx-dropzone-label> ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+        <div>
+          <button (click)="onUpload()">Subir</button>
+        </div>
+      </div>
 </div>
