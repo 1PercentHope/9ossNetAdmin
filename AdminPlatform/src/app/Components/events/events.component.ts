@@ -29,11 +29,11 @@ export class EventsComponent implements OnInit {
       eventCategory: '',
       eventDate: '',
       eventDescription: '',
-      eventPrice: ''
+      eventPrice: '',
+      image: ''
     });
     this.eventForm = this.formBuilder.group({
       image: '',
-      ref: '',
       home: '',
       away: '',
       place: '',
@@ -54,22 +54,22 @@ export class EventsComponent implements OnInit {
       })
     }
   }
-  updateEvent(updates: any) {
-    console.log(updates)
-    let event = { ref: updates.ref,image: this.eventForm.image, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice }
+ async updateEvent(updates: any) {
+    await this.uploadService.uploadImage(this.eventsForm.image).subscribe(img=>{
+    let event = { id: updates.id,image: img.url, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice }
     this.dataService.updateEvent(event).subscribe(res => {
       console.log('event is updated!')
     })
+  })
   }
   deleteAll() {
     this.dataService.deleteAllEvents().subscribe(res => {
       console.log('Events list is empty!')
     })
   }
-  onSubmit(add: any) {
-    this.uploadService.uploadImage(this.eventForm.image).subscribe(img=>{
-      console.log(img)
-      const event = {ref: add.ref,image: img.url, home: add.home, away: add.away, place : add.place, category: add.category, date: add.date, description: add.description, price: add.price }
+ async onSubmit(add: any) {
+   await this.uploadService.uploadImage(this.eventForm.image).subscribe(img=>{
+      const event = {image: img.url, homeTeam: add.home, awayTeam: add.away, place : add.place, category: add.category, date: add.date, description: add.description, price: add.price }
       this.dataService.addEvent(event).subscribe((events: any) => {
         console.log(events)
       })
@@ -83,15 +83,20 @@ export class EventsComponent implements OnInit {
      data.append('upload_preset', 'angular_cloudinary');
      data.append('cloud_name', 'codexmaker');
     this.eventForm.image = data;
-    // this.files.push(...event.target.files);
-    // this.onUpload()
   }
 
-  onRemove(event:any) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
+  // onRemove(event:any) {
+  //   console.log(event);
+  //   this.files.splice(this.files.indexOf(event), 1);
+  // }
+  onSelectUpdate(event:any){
+    const file = event.target.files[0];
+    const newData = new FormData();
+    newData.append('file', file);
+    newData.append('upload_preset', 'angular_cloudinary');
+    newData.append('cloud_name', 'codexmaker');
+    this.eventsForm.image = newData;
   }
-
   onUpload() {
     if (!this.files[0]) {
       alert('Please choose an image');

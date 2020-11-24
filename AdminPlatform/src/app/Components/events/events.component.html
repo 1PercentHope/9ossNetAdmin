@@ -38,7 +38,7 @@
             <div>
                 <!-- <a routerLink="/profile">go back</a> -->
                 <div *ngFor="let event of events" class="update">
-                    <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
+                    <form [formGroup]="eventsForm" (click)='onSelectUpdate(eventsForm.value)'>
                         <div class="inputInfo">
                             <h3> {{event.id}} </h3>
                             <img src={{event.image}} alt="" width="500px">
@@ -66,8 +66,6 @@
                     <form [formGroup]="eventForm" (ngSubmit)='onSubmit(eventForm.value)' class="inputInfo">
                         <h3>image:</h3>
                         <input type="file" name="image" (change)="onSelect($event)" />
-                        <h3>ref: </h3>
-                        <input formControlName="ref"  />
                         <h3 class="homeTeam"> home team: </h3>
                         <input formControlName="home" class="home" />
                         <h3 class="awayTeam"> away team: </h3>
