@@ -38,10 +38,10 @@
             <div>
                 <!-- <a routerLink="/profile">go back</a> -->
                 <div *ngFor="let event of events" class="update">
-                    <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
+                    <form [formGroup]="eventsForm" (click)='onSelectUpdate(eventsForm.value)'>
                         <div class="inputInfo">
                             <h3> {{event.id}} </h3>
-                            <img src={{event.image}} alt="" width="500px" (change)="fileImg($event)">
+                            <img src={{event.image}} alt="" width="500px">
                             <input type="file" name="image"  />
                             <h3 class="homeTeam"> {{event.homeTeam}}: </h3>
                             <input formControlName="eventHome" class="home" />
@@ -88,21 +88,4 @@
             </div>
         </div>
     </div>
-    <div class="terminal">
-        <ngx-dropzone (change)="onSelect($event)" style="margin: 20px;">
-          <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
-          <ngx-dropzone-image-preview
-            ngProjectAs="ngx-dropzone-preview"
-            *ngFor="let f of files"
-            [file]="f"
-            [removable]="true"
-            (removed)="onRemove(f)"
-          >
-            <ngx-dropzone-label> ({{ f.type }})</ngx-dropzone-label>
-          </ngx-dropzone-image-preview>
-        </ngx-dropzone>
-        <div>
-          <button (click)="onUpload()">Subir</button>
-        </div>
-      </div>
 </div>

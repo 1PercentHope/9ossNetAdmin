@@ -19,7 +19,7 @@ export class EventsComponent implements OnInit {
   a: any;
   imgEncode: any;
   files: File[] = [];
-  constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder, private _uploadService: UploadService) {
+  constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder, private uploadService: UploadService) {
   
     this.eventsForm = this.formBuilder.group({
       eventId: '',
@@ -29,7 +29,8 @@ export class EventsComponent implements OnInit {
       eventCategory: '',
       eventDate: '',
       eventDescription: '',
-      eventPrice: ''
+      eventPrice: '',
+      image: ''
     });
     this.eventForm = this.formBuilder.group({
       image: '',
@@ -53,37 +54,26 @@ export class EventsComponent implements OnInit {
       })
     }
   }
-  updateEvent(updates: any) {
-    console.log(updates)
-    let event = { image: this.imgEncode, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice }
+ async updateEvent(updates: any) {
+    await this.uploadService.uploadImage(this.eventsForm.image).subscribe(img=>{
+    let event = { id: updates.id,image: img.url, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice }
     this.dataService.updateEvent(event).subscribe(res => {
       console.log('event is updated!')
     })
+  })
   }
   deleteAll() {
     this.dataService.deleteAllEvents().subscribe(res => {
       console.log('Events list is empty!')
     })
   }
-  onSubmit(add: any) {
-    const event = { id: add.eventId, data: this.imgEncode, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
-    this.dataService.addEvent(event).subscribe((events: any) => {
-      console.log(events)
+ async onSubmit(add: any) {
+   await this.uploadService.uploadImage(this.eventForm.image).subscribe(img=>{
+      const event = {image: img.url, homeTeam: add.home, awayTeam: add.away, place : add.place, category: add.category, date: add.date, description: add.description, price: add.price }
+      this.dataService.addEvent(event).subscribe((events: any) => {
+        console.log(events)
+      })
     })
-  }
-  fileImg2(e:any){
-    const file = e.target.files[0];
-    this.previewFile(file)
-  }
-  previewFile(file: any){
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () =>{
-      this.eventForm.image = reader.result
-      console.log(this.eventForm.image)
-    }
-  }
-  fileImg(e:any){
 
   }
   onSelect(event:any) {
@@ -92,28 +82,24 @@ export class EventsComponent implements OnInit {
      data.append('file', file_data);
      data.append('upload_preset', 'angular_cloudinary');
      data.append('cloud_name', 'codexmaker');
-    this.imgEncode = data;
-    // this.files.push(...event.target.files);
-    // this.onUpload()
+    this.eventForm.image = data;
   }
 
-  onRemove(event:any) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
+  // onRemove(event:any) {
+  //   console.log(event);
+  //   this.files.splice(this.files.indexOf(event), 1);
+  // }
+  onSelectUpdate(event:any){
+    const file = event.target.files[0];
+    const newData = new FormData();
+    newData.append('file', file);
+    newData.append('upload_preset', 'angular_cloudinary');
+    newData.append('cloud_name', 'codexmaker');
+    this.eventsForm.image = newData;
   }
-
   onUpload() {
-    //Scape empty array
     if (!this.files[0]) {
       alert('Please choose an image');
     }
-
-    //Upload my image to cloudinary
-    
-    // this._uploadService.uploadImage(data).subscribe((response) => {
-    //   if (response) {
-    //     console.log(response);
-    //   }
-    // });
   }
 }

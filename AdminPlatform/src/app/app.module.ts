@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MassagesComponent } from './Components/massages/massages.component';
 import { UploadService } from './Service/upload.service';
 //Ngx lib dropzone
-import { NgxDropzoneModule } from 'ngx-dropzone';
+// import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgxDropzoneModule
+    // NgxDropzoneModule
     
   ],
   providers: [DataService, AdminsService, UploadService],
