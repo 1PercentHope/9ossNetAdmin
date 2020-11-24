@@ -13,6 +13,9 @@ import { SeatsComponent } from './Components/seats/seats.component';
 import { AdminsService } from './Service/admins.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MassagesComponent } from './Components/massages/massages.component';
+import { UploadService } from './Service/upload.service';
+//Ngx lib dropzone
+// import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -30,10 +33,11 @@ import { MassagesComponent } from './Components/massages/massages.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    // NgxDropzoneModule
     
   ],
-  providers: [DataService, AdminsService],
+  providers: [DataService, AdminsService, UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
