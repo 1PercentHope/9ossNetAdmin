@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../Service/data.service';
+import { UploadService } from '../../Service/upload.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -7,15 +8,19 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  styleUrls: ['./events.component.css'],
+  providers: [UploadService]
 })
 export class EventsComponent implements OnInit {
+  title = 'angular-cloudinary';
   events: any;
   eventsForm: any;
   eventForm: any;
   a: any;
   imgEncode: any;
-  constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder) {
+  files: File[] = [];
+  constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder, private _uploadService: UploadService) {
+  
     this.eventsForm = this.formBuilder.group({
       eventId: '',
       eventHome: '',
@@ -61,7 +66,7 @@ export class EventsComponent implements OnInit {
     })
   }
   onSubmit(add: any) {
-    const event = { id: add.eventId, eventImage: this.eventForm.image, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
+    const event = { id: add.eventId, data: this.imgEncode, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
     this.dataService.addEvent(event).subscribe((events: any) => {
       console.log(events)
     })
@@ -80,5 +85,35 @@ export class EventsComponent implements OnInit {
   }
   fileImg(e:any){
 
+  }
+  onSelect(event:any) {
+    const file_data = event.target.files[0];
+    const data = new FormData();
+     data.append('file', file_data);
+     data.append('upload_preset', 'angular_cloudinary');
+     data.append('cloud_name', 'codexmaker');
+    this.imgEncode = data;
+    // this.files.push(...event.target.files);
+    // this.onUpload()
+  }
+
+  onRemove(event:any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  onUpload() {
+    //Scape empty array
+    if (!this.files[0]) {
+      alert('Please choose an image');
+    }
+
+    //Upload my image to cloudinary
+    
+    // this._uploadService.uploadImage(data).subscribe((response) => {
+    //   if (response) {
+    //     console.log(response);
+    //   }
+    // });
   }
 }
