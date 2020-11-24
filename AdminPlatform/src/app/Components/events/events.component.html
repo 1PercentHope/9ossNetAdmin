@@ -41,7 +41,7 @@
                     <form [formGroup]="eventsForm" (click)='updateEvent(eventsForm.value)'>
                         <div class="inputInfo">
                             <h3> {{event.id}} </h3>
-                            <img src={{event.image}} alt="" width="500px" (change)="fileImg($event)">
+                            <img src={{event.image}} alt="" width="500px">
                             <input type="file" name="image"  />
                             <h3 class="homeTeam"> {{event.homeTeam}}: </h3>
                             <input formControlName="eventHome" class="home" />
@@ -66,6 +66,8 @@
                     <form [formGroup]="eventForm" (ngSubmit)='onSubmit(eventForm.value)' class="inputInfo">
                         <h3>image:</h3>
                         <input type="file" name="image" (change)="onSelect($event)" />
+                        <h3>ref: </h3>
+                        <input formControlName="ref"  />
                         <h3 class="homeTeam"> home team: </h3>
                         <input formControlName="home" class="home" />
                         <h3 class="awayTeam"> away team: </h3>
@@ -88,21 +90,4 @@
             </div>
         </div>
     </div>
-    <div class="terminal">
-        <ngx-dropzone (change)="onSelect($event)" style="margin: 20px;">
-          <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
-          <ngx-dropzone-image-preview
-            ngProjectAs="ngx-dropzone-preview"
-            *ngFor="let f of files"
-            [file]="f"
-            [removable]="true"
-            (removed)="onRemove(f)"
-          >
-            <ngx-dropzone-label> ({{ f.type }})</ngx-dropzone-label>
-          </ngx-dropzone-image-preview>
-        </ngx-dropzone>
-        <div>
-          <button (click)="onUpload()">Subir</button>
-        </div>
-      </div>
 </div>

@@ -19,7 +19,7 @@ export class EventsComponent implements OnInit {
   a: any;
   imgEncode: any;
   files: File[] = [];
-  constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder, private _uploadService: UploadService) {
+  constructor(private router: Router, private dataService: DataService, private formBuilder: FormBuilder, private uploadService: UploadService) {
   
     this.eventsForm = this.formBuilder.group({
       eventId: '',
@@ -33,6 +33,7 @@ export class EventsComponent implements OnInit {
     });
     this.eventForm = this.formBuilder.group({
       image: '',
+      ref: '',
       home: '',
       away: '',
       place: '',
@@ -55,7 +56,7 @@ export class EventsComponent implements OnInit {
   }
   updateEvent(updates: any) {
     console.log(updates)
-    let event = { image: this.imgEncode, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice }
+    let event = { ref: updates.ref,image: this.eventForm.image, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice }
     this.dataService.updateEvent(event).subscribe(res => {
       console.log('event is updated!')
     })
@@ -66,24 +67,13 @@ export class EventsComponent implements OnInit {
     })
   }
   onSubmit(add: any) {
-    const event = { id: add.eventId, data: this.imgEncode, home: add.eventHome, away: add.eventAway, place : add.eventPlace, category: add.eventCategory, date: add.eventDate, description: add.eventDescription, price: add.eventPrice }
-    this.dataService.addEvent(event).subscribe((events: any) => {
-      console.log(events)
+    this.uploadService.uploadImage(this.eventForm.image).subscribe(img=>{
+      console.log(img)
+      const event = {ref: add.ref,image: img.url, home: add.home, away: add.away, place : add.place, category: add.category, date: add.date, description: add.description, price: add.price }
+      this.dataService.addEvent(event).subscribe((events: any) => {
+        console.log(events)
+      })
     })
-  }
-  fileImg2(e:any){
-    const file = e.target.files[0];
-    this.previewFile(file)
-  }
-  previewFile(file: any){
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () =>{
-      this.eventForm.image = reader.result
-      console.log(this.eventForm.image)
-    }
-  }
-  fileImg(e:any){
 
   }
   onSelect(event:any) {
@@ -92,7 +82,7 @@ export class EventsComponent implements OnInit {
      data.append('file', file_data);
      data.append('upload_preset', 'angular_cloudinary');
      data.append('cloud_name', 'codexmaker');
-    this.imgEncode = data;
+    this.eventForm.image = data;
     // this.files.push(...event.target.files);
     // this.onUpload()
   }
@@ -103,17 +93,8 @@ export class EventsComponent implements OnInit {
   }
 
   onUpload() {
-    //Scape empty array
     if (!this.files[0]) {
       alert('Please choose an image');
     }
-
-    //Upload my image to cloudinary
-    
-    // this._uploadService.uploadImage(data).subscribe((response) => {
-    //   if (response) {
-    //     console.log(response);
-    //   }
-    // });
   }
 }
