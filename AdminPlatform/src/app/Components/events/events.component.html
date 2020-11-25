@@ -15,11 +15,11 @@
             <div style="display: flex">
    
                 <div *ngFor="let event of events" class="update">
-                    <form [formGroup]="eventsForm" (click)='onSelectUpdate(eventsForm.value)'>
+                    <form [formGroup]="eventsForm" (click)='onSubmitUpdate(eventsForm.value)'>
                         <div class="inputInfo">
                             <h3> {{event.id}} </h3>
                             <img src={{event.image}} alt="" width="500px">
-                            <input type="file" name="image"  />
+                            <input type="file" name="image"  (change)="onSelectUpdate($event)"/>
                             <input formControlName="eventHome" class="home" placeholder={{event.homeTeam}}/>
                             <input formControlName="eventAway" class="away" placeholder={{event.awayTeam}}/>
                             <input formControlName="eventPlace" placeholder={{event.place}}/>
@@ -35,7 +35,7 @@
 
             </div>
             <div class="update">
-                <form [formGroup]="eventForm" (ngSubmit)='onSubmit(eventForm.value)' class="inputInfo">
+                <form [formGroup]="eventForm" (submit)='onSubmit(eventForm.value)' class="inputInfo">
                     <h3>image:</h3>
                     <input type="file" name="image" (change)="onSelect($event)" />
                     <h3 class="homeTeam"> home team: </h3>
