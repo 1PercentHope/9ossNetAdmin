@@ -20,7 +20,7 @@ body{
 .wrapper .sidebar{
   width: 200px;
   height: 100%;
-  background: #4b4276;
+  background: #3E5D67;
   padding: 30px 0px;
   position: fixed;
 }
@@ -40,7 +40,7 @@ body{
 }    
 
 .wrapper .sidebar ul li a{
-  color: #bdb8d7;
+  color: white;
   display: block;
 }
 
@@ -49,7 +49,7 @@ body{
 }
 
 .wrapper .sidebar ul li:hover{
-  background-color: #594f8d;
+  background-color: #838d4f6d;
 }
     
 .wrapper .sidebar ul li:hover a{
@@ -84,7 +84,8 @@ body{
 
 .wrapper .main_content .header{
   padding: 20px;
-  background: #fff;
+  height: 10.6vh;
+  background: #C4C4C4;
   color: #717171;
   border-bottom: 1px solid #e0e4e8;
 }
@@ -110,4 +111,10 @@ body{
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 
+  }
+  img{
+    height: 7vh;
+    position: relative;
+    left: -1vw;
+    top: -2vh
   }

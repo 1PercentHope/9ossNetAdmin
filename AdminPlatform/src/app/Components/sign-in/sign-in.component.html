@@ -1,43 +1,27 @@
-<!-- <div>
-    <h3>sign in</h3>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-        <div>
-            <i id="icon" class="material-icons prefix">email</i>
-            <input id="email" type="email" class="form-control" formControlName="email">
-        </div>
-        <div>
-            <i id="icon" class="material-icons prefix">vpn_key</i>
-            <input id="password" type="password" class="form-control" formControlName="password">
-        </div>
-        <button type="submit" >Login</button>
-    </form>
-</div> -->
-<!-- ////////////////////////////////////////////////: -->
 <div class="wrapper">
     <div class="sidebar">
         <h2>sign in</h2>
         <ul>
             <li><a href="#" routerLink="/home"><i id="icon"  class="fas fa-home"></i>Home</a></li>
-            <!-- <li><a href="#" routerLink="/events"><i id="icon" class="material-icons prefix">event</i>Events</a></li>
-            <li><a href="#" routerLink="/seats"><i id="icon" class="material-icons prefix">event_seat</i>Seats</a></li>
-            <li><a href="#" routerLink="/messages"><i id="icon" class="material-icons prefix">message</i>messages</a></li>
-            <li><a href="#" routerLink="/" (click)="logOut()"><i id="icon" class="material-icons prefix">exit_to_app</i>Logout</a></li> -->
         </ul> 
 
     </div>
     <div class="main_content">
-        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="header"></div>  
         <div class="info">
+            <i class="far fa-user-circle iconSign"></i>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
                 <div>
                     <i class="fas fa-envelope"></i>
-                    <input id="email" type="email" class="form-control" formControlName="email">
-                </div>
-                <div>
+                    <input id="email" type="email" class="form-control" formControlName="email" placeholder="Email">
+
                     <i class="fas fa-lock"></i>
-                    <input id="password" type="password" class="form-control" formControlName="password">
-                </div>
+                    <input id="password" type="password" class="form-control" formControlName="password" placeholder="password">
+                
                 <button class="button" type="submit" >Login</button>
+                <p class="request">Please use your work email address so we can connect you with your team</p>
+                <p class="privacy">By signing up, I agree to the Koss Privacy Policy and Terms of Service.</p>
+            </div>
             </form>
       </div>
     </div>
