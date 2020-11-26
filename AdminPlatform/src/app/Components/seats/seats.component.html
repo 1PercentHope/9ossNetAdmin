@@ -1,62 +1,43 @@
-<!-- <div>
-    <a routerLink="/profile">go back</a>
-    <div *ngFor="let seat of seats">
-        <form [formGroup]="seatsForm" (click)='updateSeat(seatsForm.value)'>
-           
-            <input formControlName="seatsId" value= {{seat.id}}>
-            <input formControlName="seatsNumber" value= {{seat.Number}}/>
-            <input formControlName="seatsType" value= {{seat.type}}/>
-            <input formControlName="seatsAvailability" value= {{seat.availability}}/>
 
-            <button type="submit">Submit changes</button>
-        </form>
-
-    </div>
-    <button (click)='deleteAll()'>Delete all seats</button>
-</div> -->
-<!-- ////////////////////////////////////////////////////////////// -->
 <div class="wrapper">
     <div class="sidebar">
         <h2>Seats</h2>
         <ul>
             <li><a href="#" routerLink="/profile"><i class="fas fa-home" ></i>go back</a></li>
+            <li><button (click)='deleteAll()'>Delete all seats</button></li>
         </ul> 
     </div>
     <div class="main_content">
-        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="header"></div>  
         <div class="info">
             <div>
-                <!-- <a routerLink="/profile">go back</a> -->
                 <div *ngFor="let seat of seats">
                     <form [formGroup]="seatsForm" (ngSubmit)='updateSeat(seatsForm.value)'>
-                        {{seat.id}}
-                        <input formControlName="seatsId" >
-                        {{seat.Number}}
-                        <input formControlName="seatsNumber" />
+                        <h1>{{seat.id}}</h1>                         
+                        <input formControlName="seatsNumber" placeholder={{seat.Number}}/>
                         {{seat.type}}
-                        <input formControlName="seatsType" />
+                        <input formControlName="seatsType" placeholder={{seat.type}}/>
                         {{seat.availability}}
-                        <input formControlName="seatsAvailability" />
+                        <input formControlName="seatsAvailability" placeholder={{seat.availability}}/>
             
                         <button type="submit">Submit changes</button>
                     </form>
             
                 </div>
-                <div>
-                    <form [formGroup]="seatForm" (ngSubmit)='onSubmit(seatForm.value)'>
-                        number: 
-                        <input formControlName="seatNumber"/>
-                        category: 
-                        <input formControlName="seatType"/>
-                        availability:
-                        <input formControlName="seatAvailability"/>
-            
-                        <button type="submit">add seat</button>
-                    </form>
-            
-                </div>                
-                <button (click)='deleteAll()'>Delete all seats</button>
+         
+   
             </div>
+            <div class="addedSeat">
+                <form [formGroup]="seatForm" (ngSubmit)='onSubmit(seatForm.value)'>
+                    <h1>Add seat</h1>
+                    <input formControlName="seatNumber" placeholder="Number"/>
+                    <input formControlName="seatType" placeholder="Type"/>
+                    <input formControlName="seatAvailability" placeholder="Availability"/>
+        
+                    <button type="submit">add seat</button>
+                </form>
+        
+            </div>       
       </div>
     </div>
 </div>
