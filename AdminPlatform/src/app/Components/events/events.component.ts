@@ -54,7 +54,7 @@ export class EventsComponent implements OnInit {
       })
     }
   }
- async updateEvent(updates: any) {
+ async onSubmitUpdate(updates: any) {
     await this.uploadService.uploadImage(this.eventsForm.image).subscribe(img=>{
     let event = { id: updates.id,image: img.url, homeTeam: updates.eventHome, awayTeam: updates.eventAway, place: updates.eventPlace, date: updates.eventDate, category: updates.eventCategory, description: updates.eventDescription, price: updates.eventPrice }
     this.dataService.updateEvent(event).subscribe(res => {
@@ -68,7 +68,9 @@ export class EventsComponent implements OnInit {
     })
   }
  async onSubmit(add: any) {
+   console.log('start')
    await this.uploadService.uploadImage(this.eventForm.image).subscribe(img=>{
+     console.log(img)
       const event = {image: img.url, homeTeam: add.home, awayTeam: add.away, place : add.place, category: add.category, date: add.date, description: add.description, price: add.price }
       this.dataService.addEvent(event).subscribe((events: any) => {
         console.log(events)

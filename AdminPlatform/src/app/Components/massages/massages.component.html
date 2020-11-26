@@ -9,19 +9,19 @@
         </ul> 
     </div>
     <div class="main_content">
-        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="header"></div>  
         <div class="info">
-            <div>
+            <div style="color: white;">
                 <div *ngFor="let message of messages">
                     <div>
                         {{message.message}}
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="message">
                 <div>
                     <form [formGroup]="messagesForm" (ngSubmit)='onSubmit(messagesForm.value)'>
-                        <input formControlName="Text" id="Text" type="text" class="form-control"  />
+                        <textarea formControlName="Text" id="Text" type="text" class="form-control" placeholder="write a message"></textarea>
                         <button type="submit">submit</button>
                     </form>
                 </div>
